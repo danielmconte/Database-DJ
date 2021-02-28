@@ -127,7 +127,7 @@ def add_song_to_playlist(playlist_id):
 
     # Restrict form to songs not already on this playlist
 
-    curr_on_playlist = [s.id for s in playlist.songs]
+    curr_on_playlist = [s.song_id for s in playlist.songs]
     form.song.choices = (db.session.query(Song.id, Song.title)
                         .filter(Song.id.notin_(curr_on_playlist))
                         .all())
@@ -141,8 +141,6 @@ def add_song_to_playlist(playlist_id):
                                   playlist_id=playlist_id)
         db.session.add(playlist_song)
           
-        # song = Song.query.get(form.song.data)
-        # playlist.songs.append(song)
 
         db.session.commit()
 

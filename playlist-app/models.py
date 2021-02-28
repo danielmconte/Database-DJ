@@ -19,15 +19,12 @@ class Playlist(db.Model):
                     primary_key=True,
                     autoincrement=True)
 
-    name = db.Column(db.String(15),
+    name = db.Column(db.String(20),
                     nullable=False,
                     unique=True)
 
-    description = db.Column(db.String(100))
+    description = db.Column(db.String(200))
 
-    # song_id = db.Column(db.Integer, db.ForeignKey('songs.id'))
-
-    # songs = db.relationship('Song')
 
 
 class Song(db.Model):
@@ -44,21 +41,15 @@ class Song(db.Model):
                     primary_key=True,
                     autoincrement=True)
 
-    title = db.Column(db.String(15),
+    title = db.Column(db.String(50),
                     nullable=False,
                     unique=True)
 
-    artist = db.Column(db.String(15),
+    artist = db.Column(db.String(30),
                     nullable=False,
                     unique=True)
 
-    # plist_id = db.Column(db.Integer, db.ForeignKey('playlists.id'))
 
-    # # plist = db.relationship('Playlist', backref = 'songs')
-    
-    # playlist_path = db.relationship('Playlist', backref='songs')
-
-    # a_playlist = db.relationship('Playlist')
 class PlaylistSong(db.Model):
     """Mapping of a playlist to a song."""
 
